@@ -14,6 +14,15 @@ class GridPage extends StatelessWidget {
         children: [
           _backGroundPage(),
           _pinkBoxPosition(),
+          SafeArea(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  _titleInformation(),
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );
@@ -59,6 +68,35 @@ class GridPage extends StatelessWidget {
       child: Transform.rotate(
         angle: -pi / 4.0,
         child: _pinkBox(),
+      ),
+    );
+  }
+
+  Widget _titleInformation() {
+    return Container(
+      padding: EdgeInsets.all(20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Classify transaction",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(
+            height: 10.0,
+          ),
+          Text(
+            "Classify this transaction into a particular category",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+            ),
+          ),
+        ],
       ),
     );
   }
