@@ -76,7 +76,7 @@ class ScrollPage extends StatelessWidget {
             shape: StadiumBorder(),
           ),
           onPressed: () {
-            Navigator.pushNamed(context, "/");
+            Navigator.pushNamed(context, "gridPage");
           },
         ),
       ),
