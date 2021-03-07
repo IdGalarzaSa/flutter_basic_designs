@@ -9,14 +9,14 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             _createImage(),
             _createTitle(),
             _createActions(),
             _createText(),
             _createText(),
-            _createText(),
-            _createText()
+            _createButton(context),
           ],
         ),
       ),
@@ -72,13 +72,16 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _createActions() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        _createAction(Icons.call, "CALL"),
-        _createAction(Icons.near_me, "ROUTE"),
-        _createAction(Icons.share, "Share"),
-      ],
+    return Container(
+      margin: EdgeInsets.only(bottom: 32),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          _createAction(Icons.call, "CALL"),
+          _createAction(Icons.near_me, "ROUTE"),
+          _createAction(Icons.share, "Share"),
+        ],
+      ),
     );
   }
 
@@ -94,14 +97,35 @@ class HomePage extends StatelessWidget {
 
   Widget _createText() {
     String demoText =
-        "Incididunt nulla excepteur dolor enim cupidatat nulla laborum pariatur aliqua. Elit veniam ullamco incididunt ea quis voluptate minim mollit. Id ad consectetur ut cupidatat velit minim fugiat labore quis proident minim quis occaecat in.\n Ut occaecat Lorem id do do officia in nulla id do velit nulla exercitation. Ipsum qui irure voluptate non id do eu anim proident ut veniam commodo do nostrud. Veniam proident do Lorem enim ipsum mollit. Et tempor mollit qui occaecat laborum consequat.";
+        "Incididunt nulla excepteur dolor enim cupidatat nulla laborum pariatur aliqua. Elit veniam ullamco incididunt ea quis voluptate minim mollit. Id ad consectetur ut cupidatat velit minim fugiat labore quis proident minim quis occaecat in.\n \nUt occaecat Lorem id do do officia in nulla id do velit nulla exercitation. Ipsum qui irure voluptate non id do eu anim proident ut veniam commodo do nostrud. Veniam proident do Lorem enim ipsum mollit. Et tempor mollit qui occaecat laborum consequat.";
     return SafeArea(
+      // bottom: false,
+      top: false,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+        padding: EdgeInsets.symmetric(horizontal: 40),
         child: Text(
           demoText,
           textAlign: TextAlign.justify,
         ),
+      ),
+    );
+  }
+
+  Container _createButton(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 40),
+      width: double.infinity,
+      padding: EdgeInsets.only(bottom: 32),
+      child: ElevatedButton(
+        child: Text("Next page"),
+        style: ElevatedButton.styleFrom(
+          shape: new RoundedRectangleBorder(
+            borderRadius: new BorderRadius.circular(30.0),
+          ),
+        ),
+        onPressed: () {
+          Navigator.pushNamed(context, "scrollPage");
+        },
       ),
     );
   }
